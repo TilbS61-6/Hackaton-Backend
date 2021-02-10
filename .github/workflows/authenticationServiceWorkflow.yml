@@ -1,10 +1,14 @@
-name: CI/CD
+name: Authentication Service Workflow
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - AuthenticationService/**
   pull_request:
     branches: [ main ]
+    paths:
+      - AuthenticationService/**
 
 jobs:
   build:
