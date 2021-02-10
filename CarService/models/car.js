@@ -22,7 +22,7 @@ const Car = sequelize.define("Car", {
         min: 6,
         max: 50
     },
-    naam: {
+    name: {
         type: Sequelize.STRING,
         allowNull: false
     }
