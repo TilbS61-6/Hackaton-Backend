@@ -1,0 +1,69 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      ## checkout the code
+      - name: checkout the code
+        uses: actions/checkout@v2
+
+      ## Requirements for building a multi arch docker container.
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      ## Requirements for building a multi arch docker container.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      ## login to github container registry
+      - name: docker login
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+
+      ## deploy and push container to github container registry
+      - name: Build and Push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./AuthenticationService
+          file: ./AuthenticationService/Dockerfile
+          platforms: linux/arm/v7,linux/amd64
+          push: true
+          tags: |
+              ghcr.io/TilbS61-6/Hackaton-Backend/authenticationservice:latest
+              ghcr.io/TilbS61-6/Hackaton-Backend/authenticationservice:0.0.1
+      #       - name: Build and Push
+      #         uses: docker/build-push-action@v2
+      #         with:
+      #           context: ./ImageService
+      #           file: ./ImageService/Dockerfile
+      #           platforms: linux/arm/v7
+      #           push: true
+      #           tags: |
+      #             ghcr.io/teundeclercq/youtubeimgurbackend/imageservice:latest
+      #             ghcr.io/teundeclercq/youtubeimgurbackend/imageservice:0.0.2
+
+
+      ## deploy code to cluster
+#      - name: Deploy to local raspberry pi cluster
+#        uses: steebchen/kubectl@v1.0.0
+#        env:
+#          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+#        with:
+#          args: |
+#            apply -f ./AuthenticationService/deployments/authservice_deployment.yaml
+#      - name: Verify deployment
+#        uses: steebchen/kubectl@v1.0.0
+#        env:
+#          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+#        with:
+#          args: '"rollout status deployment/authservice-deploy"'
