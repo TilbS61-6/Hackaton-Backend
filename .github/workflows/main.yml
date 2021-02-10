@@ -39,8 +39,8 @@ jobs:
           platforms: linux/arm/v7,linux/amd64
           push: true
           tags: |
-              ghcr.io/TilbS61-6/Hackaton-Backend/authenticationservice:latest
-              ghcr.io/TilbS61-6/Hackaton-Backend/authenticationservice:0.0.1
+              ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
+              ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:0.0.1
       #       - name: Build and Push
       #         uses: docker/build-push-action@v2
       #         with:
