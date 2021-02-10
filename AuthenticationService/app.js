@@ -1,14 +1,19 @@
 const express = require('express');
 const app = express();
-const BodyParser = require('body-parser');
+
 const AuthRoutes = require('./routes/routes');
 
-app.use(BodyParser.json);
+const sequelize = require('./util/database');
+
+app.use(express.json());
 
 app.use('/api/auth', AuthRoutes);
 
 app.set("port", process.env.PORT || 8080);
-
-app.listen(app.get('port'), () => {
-    console.log(`Auth service is running on port: ${app.get('port')}`);
+sequelize.sync().then(res => {
+    console.log(res);
+    app.listen(app.get('port'))
+}).catch(error => {
+    console.log(error);
 });
+

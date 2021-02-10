@@ -1,6 +1,6 @@
-const Auth = require('../services/authService');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const AuthController = () => {
 
@@ -35,10 +35,8 @@ const AuthController = () => {
         });
 
         try {
-            const savedUser = await Auth.loginUser(user);
-            if (savedUser != null) {
-                return res.status(200);
-            }
+            const savedUser = await user.save();
+            res.send(savedUser).status(200);
         }
         catch (e) {
             res.status(400).send(e);
@@ -49,4 +47,4 @@ const AuthController = () => {
         register: registerUser,
     }
 }
-export default AuthController();
+module.exports = AuthController();
