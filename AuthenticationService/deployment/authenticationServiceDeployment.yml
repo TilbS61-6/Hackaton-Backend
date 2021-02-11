@@ -1,0 +1,66 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: eucarrental-auth-service
+  labels:
+    app: eucarrental-auth-service
+spec:
+  selector:
+    matchLabels:
+      app: eucarrental-auth-service
+    replicas: 1
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+    template:
+      metadata:
+        labels:
+          app: eucarrental-auth-service
+      spec:
+        containers:
+          - name: eucarrental-auth-service
+            image: ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
+            imagePullPolicy: Always
+            env:
+              - name: SECRET_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: auth-secretdb
+                    key: username
+              - name: SECRET_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: auth-secretdb
+                    key: password
+              - name: SECRET_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: auth-secretdb
+                      key: host
+              - name: SECRET_DATABASE
+                  valueFrom:
+                    secretKeyRef:
+                      name: auth-secretdb
+                      key: database
+              - name: SECRET_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: auth-secretdb
+                      key: port
+            ports:
+              - containerPort: 3001
+        #          command:
+        #            - "/bin/sh"
+        #            - "-c"
+        #            - "sleep 36000"
+        #          resources:
+        #            requests:
+        #              memory: "64Mi"
+        #              cpu: "10m"
+        #            limits:
+        #              memory: "256Mi"
+        #              cpu: "500m"
+        imagePullSecrets:
+          - name: regcred
