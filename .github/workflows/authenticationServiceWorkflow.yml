@@ -65,4 +65,4 @@ jobs:
         with:
           args: |
             apply -f ./AuthenticationService/deployment/authenticationServiceDeployment.yml
-      
+
