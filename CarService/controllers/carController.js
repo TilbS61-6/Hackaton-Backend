@@ -11,6 +11,17 @@ const CarController = () => {
             res.send(cars).status(200)
         }
     };
+
+    // get car by uuid (test purposes)
+    const getCarByUuid = async (req, res, next) => {
+        const car = await Car.findOne({where: { uuid: req.body.uuid }});
+        if (!car) {
+            return res.status(400).send("no car with corresponding id found");
+        } else{
+            res.send(car).status(200)
+        }
+    };
+
     // add the car.
     const addCar = async (req, res, next) => {
         const car = new Car({
@@ -29,6 +40,7 @@ const CarController = () => {
     return {
         allCars: getAllCars,
         saveCar: addCar,
+        getCar: getCarByUuid,
     }
 }
 module.exports =  CarController();
