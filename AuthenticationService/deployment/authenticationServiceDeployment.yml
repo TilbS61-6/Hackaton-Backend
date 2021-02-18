@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: eucarrental-auth-service
-          image: http://ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
+          image: https://ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
           imagePullPolicy: Always
           env:
             - name: SECRET_USERNAME
