@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eucarrental-auth-service
+  name: eu-carrental-auth-service
   labels:
     app: eucarrental-auth-service
 spec:
