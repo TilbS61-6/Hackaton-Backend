@@ -54,7 +54,7 @@ jobs:
       image: ghcr.io/teundeclercq/authenticationservice:latest
       credentials:
         username: ${{ github.repository_owner }}
-        password: ${{ secrets.CR_PAT }
+        password: ${{ secrets.CR_PAT }}
     steps:
       - name: Test container
         run: docker-compose run test
