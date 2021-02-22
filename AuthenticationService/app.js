@@ -15,6 +15,5 @@ sequelize.sync().then(res => {
     app.listen(app.get('port'))
 }).catch(error => {
     console.log(error);
-    console.log(error);
 });
 
