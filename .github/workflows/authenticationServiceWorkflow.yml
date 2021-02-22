@@ -46,12 +46,9 @@ jobs:
           tags: |
                ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
                ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:0.0.${{github.run_number}}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: artifact-setup.0.0.{{github.run_number}}
-          path: /bin
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/teundeclercq/authenticationservice:latest
