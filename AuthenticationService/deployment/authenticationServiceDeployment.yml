@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eucarrental-auth-service
+  name: eu-carrental-auth-service
   labels:
     app: eucarrental-auth-service
 spec:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: eucarrental-auth-service
-          image: http://ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
+          image: ghcr.io/tilbs61-6/hackaton-backend/authenticationservice:latest
           imagePullPolicy: Always
           env:
             - name: SECRET_USERNAME
