@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: HelloWorld
-        uses: ./.github/actionTwo/
+        uses: ./
         id: hello
         with:
           who-to-greet: 'Teun de Clercq'
