@@ -19,4 +19,6 @@ jobs:
         run: |
           echo "dirs=(${{steps.hello.outputs.directorys}})" >> $GITHUB_ENV
       - name: print dirs
-        run: read -a arr <<< $env.dirs
+        run: | 
+          echo "my array $env.dirs"
+          echo "number of elements in array ${#env.dirs[@]}"
