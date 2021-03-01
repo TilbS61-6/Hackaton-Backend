@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Read the current dir's
-        uses: ./.github/actions
-        id: directorys
+      - name: HelloWorld
+        uses: ./.github/actionTwo/
+        id: hello
+        with:
+          who-to-greet: 'Teun de Clercq'
 
       - name: Get the current dir
-        run: echo "Current directories are ${{ steps.currentdir.outputs.directorys }}"
+        run: echo "Current directories are ${{ steps.currentdir.outputs.time }}"
 
