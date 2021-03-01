@@ -20,4 +20,4 @@ jobs:
           echo "dirs=(${{steps.hello.outputs.directorys}})" >> $GITHUB_ENV
       - name: print dirs
         run: | 
-          echo "my array ${env.dirs[@]}"
+          echo "my array ${{env.dirs[@]}}"
