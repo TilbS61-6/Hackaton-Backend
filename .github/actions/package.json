@@ -2,7 +2,7 @@
   "name": "readdir",
   "version": "0.0.1",
   "description": "",
-  "main": ".github/actions/readDir.js",
+  "main": "readDir.js",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "test",
-    "start": "node .github/actions/readDir.js"
+    "start": "node readDir.js"
   },
   "repository": {
     "type": "git",
