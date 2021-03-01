@@ -16,6 +16,6 @@ jobs:
           who-to-greet: 'teun de clercq'
         # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.directorys }}"
+        run: echo "The directory's that have files are ${{ steps.hello.outputs.directorys }}"
 
 
