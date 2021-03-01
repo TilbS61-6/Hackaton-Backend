@@ -10,7 +10,7 @@ jobs:
     runs-on:
     strategy:
       matrix:
-        path: [ AuthenticationService/**, BillingService/** ]
+        path: [ AuthenticationService/**, CarService/** ]
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
