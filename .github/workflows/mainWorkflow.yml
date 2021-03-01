@@ -1,14 +1,12 @@
-name: main workflow
-
-on:
-  push:
-    branches: [ main ]
+on: [push]
     
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: job to say hello
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: HelloWorld
         uses: ./
         id: hello
