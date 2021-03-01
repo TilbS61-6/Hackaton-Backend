@@ -17,6 +17,6 @@ jobs:
         # Use the output from the `hello` step
       - name: Get the output time
         run: |
-          echo "dirs=$steps.hello.outputs.directorys" >> $GITHUB_ENV
+          echo "dirs=${steps.hello.outputs.directorys}" >> $GITHUB_ENV
       - name: print dirs
         run: echo "${{env.dirs}}"
