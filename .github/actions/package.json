@@ -1,26 +1,17 @@
 {
-  "name": "readdir",
-  "version": "0.0.1",
+  "name": "actions",
+  "version": "1.0.0",
   "description": "",
   "main": "readDir.js",
+  "scripts": {
+    "start": "node readDir.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "fs": "^0.0.1-security"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "test",
-    "start": "node readDir.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TilbS61-6/Hackaton-Backend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TilbS61-6/Hackaton-Backend/issues"
-  },
-  "homepage": "https://github.com/TilbS61-6/Hackaton-Backend#readme"
+    "fs": "0.0.1-security"
+  }
 }
