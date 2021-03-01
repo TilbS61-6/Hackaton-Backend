@@ -19,11 +19,9 @@ try {
                     console.log(log);
                 })
                 console.log(file + " " + fs.statSync(file).isDirectory());
-            }).then(i => {
-                    core.setOutput("directorys", newArray);
-
-            });
+            })
         }
+        core.setOutput("directorys", newArray);
     });
 
     function isDirEmpty(dirname) {
