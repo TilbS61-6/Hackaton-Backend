@@ -4,6 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: job to say hello
+    strategy:
+      matrix:
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2

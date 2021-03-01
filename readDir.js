@@ -5,7 +5,7 @@ const dot = "."
 
 
 try {
-    let newArray = [];
+    let newArray = "";
 
     fs.readdir("./", (err, files)=> {
         let _arr = [];
@@ -18,6 +18,7 @@ try {
             newArray = _arr;
         }
         core.setOutput("directorys", newArray);
+
     });
 
     function isDirEmpty(dirname) {
