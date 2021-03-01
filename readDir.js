@@ -8,27 +8,22 @@ try {
     let newArray = [];
 
     fs.readdir("./", (err, files)=> {
+        let _arr = [];
         if (err) {
             console.log(err.message);
         } else {
-            newArray = files.filter((file, index, object) => {
+            _arr = files.filter((file, index, object) => {
                 return !file.includes(dot) && !file.includes("_");
             });
-            newArray.filter((file) => {
-                isDirEmpty(file).then(log => {
-                    console.log(log);
-                })
-                console.log(file + " " + fs.statSync(file).isDirectory());
-            })
+            newArray = _arr;
         }
         core.setOutput("directorys", newArray);
     });
 
     function isDirEmpty(dirname) {
         return fs.promises.readdir(dirname).then(files => {
-            return files.length > 0;
-        })
-
+            return files.length === 0;
+        });
     }
 } catch (e) {
     core.setFailed(e.message);
