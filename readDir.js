@@ -5,7 +5,7 @@ const dot = "."
 
 
 try {
-    let newArray = "";
+    let newArray = [];
 
     fs.readdir("./", (err, files)=> {
         let _arr = [];
