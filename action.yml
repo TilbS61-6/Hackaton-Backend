@@ -3,9 +3,11 @@ description: 'Greet someone and record the time'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
-    required: true
+    required: false
     default: 'World'
 outputs:
+  directorys:
+    description: 'the dirs'
   time: # id of output
     description: 'The time we greeted you'
 runs:
