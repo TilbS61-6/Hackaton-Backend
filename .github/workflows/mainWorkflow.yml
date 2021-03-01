@@ -19,4 +19,7 @@ jobs:
       - name: Get the output time
         run: |
           myarray=(`echo ${{steps.hello.outputs.directorys}} | tr ',' ' '`)
+          for((i=0; i < ${#myarray[@]}; i++)); do
+            current_element=${arr[i]}
+          done
           echo "my array $myarray"
