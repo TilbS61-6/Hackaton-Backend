@@ -3,14 +3,15 @@ name: main workflow
 on:
   push:
     branches: [ main ]
-    paths: ${{matrix.path}}
+    paths:
+      - ${{matrix.path}}
     
 jobs:
   build:
     runs-on:
     strategy:
       matrix:
-        path: [ AuthenticationService/**, CarService/** ]
+        paths: [ AuthenticationService/**, CarService/** ]
     steps:
       - uses: actions/checkout@v2
       - uses: docker/setup-qemu-action@v1
