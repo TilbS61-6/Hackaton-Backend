@@ -1,5 +1,10 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
+inputs:
+  who-to-greet:
+    description: 'who to greet'
+    required: false
+    default: 'World'
 outputs:
   directorys: # id of output
     description: 'directorys of repo'
