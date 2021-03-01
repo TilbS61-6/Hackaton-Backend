@@ -1,5 +1,5 @@
 on: [push]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,4 +16,7 @@ jobs:
           who-to-greet: 'teun de clercq'
         # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The directory's that have files are ${{ steps.hello.outputs.directorys.$f1 }}"
+        run: |
+          echo "dirs=${{ steps.hello.outputs.directorys }}"
+      - name: print dirs
+        run: echo "${{dirs}}"
