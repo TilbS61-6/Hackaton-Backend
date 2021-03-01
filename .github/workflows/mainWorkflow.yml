@@ -21,4 +21,4 @@ jobs:
       - name: print dirs
         run: | 
           echo "my array $env.dirs"
-          echo "number of elements in array ${#env.dirs[@]}"
+          echo "number of elements in array ${{#env.dirs[@]}}"
