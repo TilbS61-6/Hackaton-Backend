@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Read the current dir's
         uses: ./.github/actions
-        id: currentdir
+        id: directorys
 
       - name: Get the current dir
         run: echo "Current directories are ${{ steps.currentdir.outputs.directorys }}"

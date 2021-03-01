@@ -28,6 +28,9 @@ try {
             return files.length > 0;
         })
     }
+
+    const payload = JSON.stringify(github.context.payload, undefined, 2);
+    console.log(`The event payload: ${payload}`);
     core.setOutput("directorys", newArray);
 } catch (e) {
     core.setFailed(e.message);
