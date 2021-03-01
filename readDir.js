@@ -30,7 +30,6 @@ try {
         })
 
     }
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
 } catch (e) {
     core.setFailed(e.message);
 }
