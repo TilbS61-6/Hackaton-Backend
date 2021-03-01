@@ -18,4 +18,4 @@ jobs:
       - name: Get the output time
         run: |
           myarray=(`echo ${{steps.hello.outputs.directorys}} | tr ',' ' '`)
-          echo "my array ${myarray}"
+          echo "my array ${myarray[@]}"
