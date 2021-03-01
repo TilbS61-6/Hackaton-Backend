@@ -17,7 +17,9 @@ try {
             });
             newArray = _arr;
         }
-        core.setOutput("directorys", newArray);
+        newArray.filter(item => {
+            core.setOutput(item, item);
+        })
 
     });
 
