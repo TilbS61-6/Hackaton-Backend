@@ -21,5 +21,6 @@ jobs:
           myarray=(`echo ${{steps.hello.outputs.directorys}} | tr ',' ' '`)
           for((i=0; i < ${#myarray[@]}; i++)); do
             current_element=${arr[i]}
+            echo "current_element"
           done
           echo "my array $myarray"
