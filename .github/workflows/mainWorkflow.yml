@@ -20,5 +20,5 @@ jobs:
         # Use the output from the `hello` step
       - name: Get the output time
         run: |
-          myarray=(`echo ${{steps.hello.outputs.directorys}} | tr '[' ']' ',' ' '`)
+          myarray=(`echo ${{steps.hello.outputs.directorys}} | tr -d '[' -d ']' ',' ' '`)
           echo "my array ${myarray[@]}"
