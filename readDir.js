@@ -20,6 +20,7 @@ try {
                 })
                 console.log(file + " " + fs.statSync(file).isDirectory());
             });
+            core.setOutput("directorys", newArray);
         }
     });
 
@@ -27,10 +28,9 @@ try {
         return fs.promises.readdir(dirname).then(files => {
             return files.length > 0;
         })
-    }
 
+    }
     const payload = JSON.stringify(github.context.payload, undefined, 2);
-    core.setOutput("directorys", newArray);
 } catch (e) {
     core.setFailed(e.message);
 }
