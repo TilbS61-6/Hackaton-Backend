@@ -16,8 +16,4 @@ jobs:
           who-to-greet: 'teun de clercq'
         # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The directory's that have files are ${{ steps.hello.outputs.directorys }}"
-      - name: cut the strings
-        run: A="$(cut -d',' -f1 <<<"$s")"
-      - name: run A
-        run: echo "$A"
+        run: echo "The directory's that have files are ${{ steps.hello.outputs.directorys.$f1 }}"
