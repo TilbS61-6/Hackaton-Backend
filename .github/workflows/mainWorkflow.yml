@@ -31,3 +31,5 @@ jobs:
           echo "my array $myarray"
       - name: ls
         run: ls -l
+      - name: payload
+        run: echo "${{github.context.payload}}"
