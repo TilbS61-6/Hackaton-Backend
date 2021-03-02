@@ -24,3 +24,5 @@ jobs:
             echo $current_element
           done
           echo "my array $myarray"
+      - name: check env
+        run: env
