@@ -1,1 +1,19 @@
+name: pr test
 
+on:
+  pull_request:
+        branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     - name: checkout
+       uses: actions/checkout@v2
+     - name: NPM ci/build
+       run: | 
+        npm ci
+        npm build
+     - name: Test
+       run: npm test
+  
+   
