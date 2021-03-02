@@ -6,6 +6,17 @@ on:
 
 
 jobs:
+  labelPR:
+    name: Label PR With Repo(s)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label PRs
+        uses: adamzolyak/monorepo-pr-labeler-action@patching
+        env:
+          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
+        with:
+          prefix: '🗂 ' # optional
+
   build:
     runs-on: ubuntu-latest
     name: job to say hello
@@ -13,6 +24,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: npm install
         run: npm install
       - name: Hello world action step
