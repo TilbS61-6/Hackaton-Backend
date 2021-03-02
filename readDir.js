@@ -23,11 +23,15 @@ try {
 
     });
 
+
     function isDirEmpty(dirname) {
         return fs.promises.readdir(dirname).then(files => {
             return files.length === 0;
         });
     }
+
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    console.log(`The event payload: ${payload}`);
 } catch (e) {
     core.setFailed(e.message);
 }
