@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accountservice-deploy
+  labels:
+    app: account-service
+spec:
+  selector:
+    matchLabels:
+      app: account-service
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: account-service
+    spec:
+      containers:
+        - name: account-service
+          image: ghcr.io/teundeclercq/car-rental-account-service-dev:latest
+          imagePullPolicy: Always
+      
+          ports:
+            - containerPort: 51736
+      imagePullSecrets:
+        - name: regcred
