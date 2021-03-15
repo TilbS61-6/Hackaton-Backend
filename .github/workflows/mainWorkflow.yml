@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deployment test job
     steps:
+     - uses: actions/checkout@v2
      - name: deploy to cluster
        uses: steebchen/kubectl@master
        env:
