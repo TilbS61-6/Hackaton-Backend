@@ -13,7 +13,7 @@ jobs:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
        with:
         args: |
-          apply -f ./AccountService/Deployments/AccountServiceDeployment.yaml
+          apply -f ./AccountService/Deployments/authenticationServiceDeployment.yml
 #      - name: verify deployment
 #        uses: steebchen/kubectl@master
 #        env:
