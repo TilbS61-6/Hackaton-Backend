@@ -1,47 +1,22 @@
 on:
-  push:
-    paths:
-    - 'AuthenticationService/**'
-    - 'CarService/**'
+ workflow_dispatch:
 
 
 jobs:
-  labelPR:
-    name: Label PR With Repo(s)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Label PRs
-        uses: adamzolyak/monorepo-pr-labeler-action@patching
-        env:
-          GITHUB_TOKEN: ${{ secrets.CR_PAT }}
-        with:
-          prefix: '🗂 ' # optional
-
   build:
     runs-on: ubuntu-latest
-    name: job to say hello
-
+    name: Deployment test job
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: npm install
-        run: npm install
-      - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
-        id: hello
-        with:
-          who-to-greet: 'teun de clercq'
-        # Use the output from the `hello` step
-      - name: Get the output time
-        run: |
-          myarray=(`echo ${{steps.hello.outputs.directorys}} | tr ',' ' '`)
-          for((i=0; i < ${#myarray[@]}; i++)); do
-            current_element=${arr[i]}
-            echo $current_element
-          done
-          echo "my array $myarray"
-      - name: ls
-        run: ls -l
-      - name: payload
-        run: echo "${{github.context.payload}}"
+     - name: deploy to cluster
+       uses: steebchen/kubectl@master
+       env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+       with:
+        args: |
+          apply -f ./AccountService/Deployments/AccountServiceDeployment.yaml
+#      - name: verify deployment
+#        uses: steebchen/kubectl@master
+#        env:
+#         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+#        with:
+#         args: '"rollout status deployment/my-app"'
